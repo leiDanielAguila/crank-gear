@@ -1,103 +1,115 @@
-import Image from "next/image";
+"use client";
+import { useEffect, useState } from "react";
+
+import { Roboto_Mono } from "next/font/google";
+import { Krona_One } from "next/font/google";
+import Dropdown from "@mui/joy/Dropdown";
+import Menu from "@mui/joy/Menu";
+import MenuButton from "@mui/joy/MenuButton";
+import MenuItem from "@mui/joy/MenuItem";
+import Button from "@mui/joy/Button";
+import OpenInNew from "@mui/icons-material/OpenInNew";
+import { ImageCarousel } from "./carousel";
+
+const roboto = Roboto_Mono({
+  subsets: ["latin"],
+});
+
+const krona = Krona_One({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+export function DropdownMenu() {
+  return (
+    <Dropdown>
+      <MenuButton>Menu</MenuButton>
+      <Menu>
+        <MenuItem>Men</MenuItem>
+        <MenuItem>Women</MenuItem>
+        <MenuItem>Kids</MenuItem>
+        <MenuItem>Featured</MenuItem>
+      </Menu>
+    </Dropdown>
+  );
+}
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [navBg, setNavBg] = useState("bg-transparent");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setNavBg("bg-[#CDE4B2]");
+      } else {
+        setNavBg("bg-transparent");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const productImages = [
+    "Product-1.jpg",
+    "Product-2.jpg",
+    "Product-3.jpg",
+    "Product-5.jpg",
+  ];
+
+  return (
+    <main>
+      <nav
+        className={`sticky top-0 z-50 flex flex-row w-full h-24 items-center transition-colors duration-300 ${navBg}`}
+      >
+        <h1 className={`${krona.className} text-4xl ml-4`}>Crank Gear</h1>
+        <div className="ml-auto mr-8">
+          <img className="w-8 h-8" src="user.png" />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="ml-8 mr-8">
+          <img className="w-8 h-8" src="shopping-cart.png" />
+        </div>
+        <div className="ml-8 mr-8">
+          <DropdownMenu />
+        </div>
+      </nav>
+      <section className="bg-[#CDE4B2] w-full h-136 flex justify-center items-center p-16 shadow-xl">
+        <div className="flex flex-col justify-center items-center w-full">
+          <h1 className={`${krona.className} text-6xl mb-4`}>
+            Crank Gear Supply Co.
+          </h1>
+          <p className={`${roboto.className} text-l text-zinc-600`}>
+            Sustainable outdoor gear to combat the fast-changing climate
+          </p>
+          <div className="mt-24">
+            <Button
+              size="lg"
+              variant="soft"
+              color="primary"
+              startDecorator={<OpenInNew />}
+              component="a"
+              href="/product"
+            >
+              View Catalog
+            </Button>
+          </div>
+        </div>
+      </section>
+      
+      <div className="flex flex-row m-16">
+        <ImageCarousel
+          images={productImages}
+          className="max-w-3xl"
+          aspectRatio="aspect-square"
+          autoPlay={true}
+          autoPlayInterval={4000}
+        />
+      </div>
+      <div className="flex flex-row items-center justify-center p-4 mt-4">
+        <img src="2.jpg" className="h-96 w-auto object-cover" />
+        <img src="3.jpg" className="h-96 w-auto object-cover" />
+        <img src="4.jpg" className="h-96 w-auto object-cover" />
+      </div>
+    </main>
   );
 }
