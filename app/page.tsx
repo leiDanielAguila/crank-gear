@@ -14,8 +14,9 @@ import AccordionGroup from "@mui/joy/AccordionGroup";
 import Accordion from "@mui/joy/Accordion";
 import AccordionDetails from "@mui/joy/AccordionDetails";
 import AccordionSummary from "@mui/joy/AccordionSummary";
-import ListDivider from "@mui/joy/ListDivider";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import Input from "@mui/joy/Input";
+import Link from "next/link";
 
 const roboto = Roboto_Mono({
   subsets: ["latin"],
@@ -189,7 +190,7 @@ export default function Home() {
         <p className={`${krona.className} text-3xl font-bold`}>
           Our Mission: Gear That Goes Further
         </p>
-        <p className="text-lg text-gray-700 m-8">
+        <p className={`${roboto.className} text-lg text-gray-700 m-8`}>
           At Crank Gear Supply Co., we believe that your adventure gear should
           be as enduring as your spirit—and as kind to the planet as you are.
           That’s why every product we design is built with sustainable
@@ -205,9 +206,107 @@ export default function Home() {
         <img src="3.jpg" className="h-96 w-auto object-cover" />
         <img src="4.jpg" className="h-96 w-auto object-cover" />
       </div>
-      <div className="flex flex-row">
-
+      <div className="flex flex-row bg-[#CDE4B2] rounded-xl m-16 h-120 border border-black justify-center items-center">
+        <div className="flex w-1/2 m-4">
+          <div className="flex flex-col items-center w-full">
+            <img src="letter.png" className="w-20 h-20 mb-2" />
+            <h1 className={`${krona.className} text-3xl font-bold ml-8 mb-4`}>
+              Join the Movement for Greener Gear
+            </h1>
+            <p className={`${roboto.className} text-lg text-gray-700 m-auto`}>
+              Sign up for updates on sustainable product launches, eco-stories,
+              and members-only deals.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col w-1/2 m-4 p-2">
+          <h1 className={`${roboto.className} text-lg text-gray-700 mb-2`}>
+            First Name
+          </h1>
+          <Input size="lg" placeholder="John" className="mb-4" />
+          <h1 className={`${roboto.className} text-lg text-gray-700 mb-2`}>
+            Last Name
+          </h1>
+          <Input size="lg" placeholder="Doe" className="mb-4" />
+          <h1 className={`${roboto.className} text-lg text-gray-700 mb-2`}>
+            Email
+          </h1>
+          <Input
+            type="email"
+            size="lg"
+            placeholder="johndoe@gmail.com"
+            className="mb-4"
+          />
+          <Button component="a" href="#as-link">
+            Subscribe
+          </Button>
+        </div>
       </div>
+      <footer className="bg-gray-900 text-gray-300 py-10">
+        <div className="container mx-auto px-6 md:px-12 grid md:grid-cols-3 gap-10">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Navigation</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/men" className="hover:underline">
+                  Men
+                </Link>
+              </li>
+              <li>
+                <Link href="/women" className="hover:underline">
+                  Women
+                </Link>
+              </li>
+              <li>
+                <Link href="/kids" className="hover:underline">
+                  Kids
+                </Link>
+              </li>
+              <li>
+                <Link href="/featured" className="hover:underline">
+                  Featured
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalog" className="hover:underline">
+                  View Catalog
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <p>
+              Email:{" "}
+              <a
+                href="mailto:support@crankgear.com"
+                className="hover:underline"
+              >
+                support@crankgear.com
+              </a>
+            </p>
+            <p>
+              Phone:{" "}
+              <a href="tel:+1234567890" className="hover:underline">
+                +1 (234) 567-890
+              </a>
+            </p>
+            <p>Mon–Fri: 9am – 5pm PST</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">About Crank Gear</h3>
+            <p className="text-sm">
+              Dedicated to sustainable exploration, Crank Gear Supply Co.
+              designs high-performance gear that respects the planet and
+              empowers the wild-hearted.
+            </p>
+          </div>
+        </div>
+        <div className="text-center mt-10 text-sm text-gray-500 border-t border-gray-700 pt-6">
+          &copy; {new Date().getFullYear()} Crank Gear Supply Co. All rights
+          reserved.
+        </div>
+      </footer>
     </main>
   );
 }
