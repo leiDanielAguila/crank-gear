@@ -114,7 +114,7 @@ export default function Home() {
               color="primary"
               startDecorator={<OpenInNew />}
               component="a"
-              href="/product"
+              href="#catalog"
             >
               View Catalog
             </Button>
