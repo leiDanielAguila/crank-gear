@@ -1,12 +1,6 @@
 
-import { Roboto_Mono } from "next/font/google";
 import { Krona_One } from "next/font/google";
 import { DropdownMenu } from "../page";
-
-
-const roboto = Roboto_Mono({
-  subsets: ["latin"],
-});
 
 const krona = Krona_One({
   weight: "400",

@@ -144,7 +144,7 @@ export default function Home() {
               recycled materials, this versatile pack is designed to withstand
               harsh weather and rough trails while minimizing environmental
               impact. With an ergonomic frame, padded laptop sleeve, and
-              multiple gear loops, it's perfect for mountain hikes or daily
+              multiple gear loops, its perfect for mountain hikes or daily
               commutes. Adventure responsibly, one trail at a time.
             </AccordionDetails>
           </Accordion>
