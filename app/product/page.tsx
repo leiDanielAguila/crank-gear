@@ -1,6 +1,6 @@
 
 import { Krona_One } from "next/font/google";
-import { DropdownMenu } from "../page";
+import { DropdownMenu } from "../components/dropdownmenu";
 
 const krona = Krona_One({
   weight: "400",
