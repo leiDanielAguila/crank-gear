@@ -6,6 +6,7 @@ const krona = Krona_One({
   weight: "400",
   subsets: ["latin"],
 });
+
 export default function Product() {
   return (
     <>
